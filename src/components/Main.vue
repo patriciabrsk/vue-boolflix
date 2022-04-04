@@ -1,23 +1,33 @@
 <template>
   <div>
-    <div>
-      <MovieCard
+    <!-- <MovieCard
         :movieData="movie"
         v-for="(movie, index) in moviesList"
         :key="index"
       />
+    </div> -->
+    <div
+      v-for="(movie, index) in moviesList"
+      :key="index.id"
+      class="text-uppercase p-3"
+    >
+      <p>{{ movie.title }}</p>
+      <p>{{ movie.original_language }}</p>
+      <p></p>
     </div>
   </div>
 </template>
 
 <script>
-import MovieCard from "./MovieCard.vue";
+// import MovieCard from "./MovieCard.vue";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Main",
-  props: {},
-  components: { MovieCard },
+  props: {
+    moviesList: Array,
+  },
+  //   components: { MovieCard },
   data() {
     return {};
   },
@@ -26,4 +36,8 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/style/style.scss";
+
+* p {
+  color: white;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="search" />
-    <Main />
+    <Main :moviesList="moviesList" />
   </div>
 </template>
 
@@ -29,8 +29,8 @@ export default {
             `https://api.themoviedb.org/3/search/movie?api_key=b2ef9be417192405baaaa7ce6bc2d036&language=it-IT&query=${query}`
           )
           .then((response) => {
-            this.moviesList = response.data.results;
-            console.log(this.moviesList);
+            this.movies = response.data.results;
+            console.log(this.movies);
           })
           .catch((error) => {
             console.log(error.status_message);
@@ -45,7 +45,8 @@ export default {
           `https://api.themoviedb.org/3/movie/popular?api_key=b2ef9be417192405baaaa7ce6bc2d036&language=it-IT&&page=1`
         )
         .then((response) => {
-          this.movies = response.data.results;
+          console.log(response);
+          this.moviesList = response.data.results;
           console.log(this.moviesList);
         })
         .catch((error) => {

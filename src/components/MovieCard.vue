@@ -1,6 +1,6 @@
 <template>
   <div class="movie-card rounded-3">
-    <div class="front">
+    <!-- <div class="front">
       <img
         :src="`https://image.tmdb.org/t/p/w342/${movieData.poster_path}`"
         :alt="movieData.title"
@@ -9,7 +9,7 @@
       <p>{{ movieData.original_title }}</p>
       <p></p>
       <p></p>
-    </div>
+    </div> -->
 
     <!-- <div class="back"></div> -->
   </div>
