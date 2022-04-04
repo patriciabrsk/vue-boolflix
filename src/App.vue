@@ -35,25 +35,28 @@ export default {
           .catch((error) => {
             console.log(error.status_message);
           });
+      } else {
+        this.moviesList = [];
       }
     },
-    // async getMovieData() {
-    //   axios
-    //     .get(
-    //       `https://api.themoviedb.org/3/search/movie?api_key=b2ef9be417192405baaaa7ce6bc2d036&language=it-IT&`
-    //     )
-    //     .then((response) => {
-    //       this.movies = response.data.results;
-    //       console.log(this.moviesList);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.status_message);
-    //     });
-    // },
+    async getMovieData() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=b2ef9be417192405baaaa7ce6bc2d036&language=it-IT&&page=1`
+        )
+        .then((response) => {
+          this.movies = response.data.results;
+          console.log(this.moviesList);
+        })
+        .catch((error) => {
+          console.log(error.status_message);
+        });
+    },
   },
   created() {
-    this.search();
+    this.getMovieData();
   },
+  // computed() {},
 };
 </script>
 

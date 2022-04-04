@@ -1,7 +1,11 @@
 <template>
   <div>
-    <div v-for="(movie, index) in moviesList" :key="index">
-      <MovieCard :movieData="movie" />
+    <div>
+      <MovieCard
+        :movieData="movie"
+        v-for="(movie, index) in moviesList"
+        :key="index"
+      />
     </div>
   </div>
 </template>
@@ -12,14 +16,10 @@ import MovieCard from "./MovieCard.vue";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Main",
-  props: {
-    movies: [],
-  },
+  props: {},
   components: { MovieCard },
   data() {
-    return {
-      moviesList: [],
-    };
+    return {};
   },
 };
 </script>
