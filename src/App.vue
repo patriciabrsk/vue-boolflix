@@ -29,7 +29,7 @@ export default {
             `https://api.themoviedb.org/3/search/movie?api_key=b2ef9be417192405baaaa7ce6bc2d036&language=it-IT&query=${query}`
           )
           .then((response) => {
-            this.movies = response.data.results;
+            this.moviesList = response.data.results;
             console.log(this.moviesList);
           })
           .catch((error) => {
@@ -51,9 +51,9 @@ export default {
     //     });
     // },
   },
-  // created() {
-  //   this.getMovieData();
-  // },
+  created() {
+    this.search();
+  },
 };
 </script>
 
