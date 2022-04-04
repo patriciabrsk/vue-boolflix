@@ -6,15 +6,24 @@
         :key="index"
       />
     </div> -->
-    <div
+    <ol
       v-for="(movie, index) in moviesList"
-      :key="index.id"
+      :key="index"
       class="text-uppercase p-3"
     >
-      <p>{{ movie.title }}</p>
-      <p>{{ movie.original_language }}</p>
-      <p></p>
-    </div>
+      <li>
+        {{ movie.title }}
+      </li>
+      <li>
+        {{ movie.original_title }}
+      </li>
+      <li>
+        {{ movie.original_language }}
+      </li>
+      <li>
+        {{ movie.vote_average }}
+      </li>
+    </ol>
   </div>
 </template>
 
@@ -37,7 +46,7 @@ export default {
 <style scoped lang="scss">
 @import "../assets/style/style.scss";
 
-* p {
+ol {
   color: white;
 }
 </style>
