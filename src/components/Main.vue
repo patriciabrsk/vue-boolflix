@@ -1,34 +1,17 @@
 <template>
-  <div>
-    <!-- <MovieCard
+  <div clas="container py-4">
+    <div class="row row-cols-5 g-4 mx-5">
+      <MovieCard
         :movieData="movie"
         v-for="(movie, index) in moviesList"
         :key="index"
       />
-    </div> -->
-    <ol
-      v-for="(movie, index) in moviesList"
-      :key="index"
-      class="text-uppercase p-3"
-    >
-      <li>
-        {{ movie.title }}
-      </li>
-      <li>
-        {{ movie.original_title }}
-      </li>
-      <li>
-        {{ movie.original_language }}
-      </li>
-      <li>
-        {{ movie.vote_average }}
-      </li>
-    </ol>
+    </div>
   </div>
 </template>
 
 <script>
-// import MovieCard from "./MovieCard.vue";
+import MovieCard from "./MovieCard.vue";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -36,7 +19,7 @@ export default {
   props: {
     moviesList: Array,
   },
-  //   components: { MovieCard },
+  components: { MovieCard },
   data() {
     return {};
   },
