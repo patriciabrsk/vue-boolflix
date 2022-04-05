@@ -1,21 +1,23 @@
 <template>
   <div>
     <div class="col">
-      <div class="movie-card h-100 card">
+      <div class="movie-card h-100 card rounded-3">
         <!-- <div class="front"> -->
         <img
           class="img-fluid"
           :src="`https://image.tmdb.org/t/p/w342/${movieData.poster_path}`"
           :alt="movieData.title"
         />
-        <!-- <h1>{{ movieData.title }}</h1>
-        <p>{{ movieData.original_title }}</p> -->
+        <h1 class="text-white">{{ movieData.title || movieData.name }}</h1>
+        <p class="text-white">
+          {{ movieData.original_title || movieData.original_name }}
+        </p>
+        <p class="text-white">{{ movieData.original_language }}</p>
         <!-- </div> -->
+        <!-- <div class="back"></div> -->
       </div>
     </div>
-    <!-- <div class="back"></div> -->
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -24,15 +26,12 @@ export default {
   props: {
     movieData: Object,
   },
-  // props: {
-  //   movieData: {
-  //     type: String,
-  //     required: true,
-  //   },
-  data() {
-    return {};
-  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+div.movie-card:hover {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+</style>

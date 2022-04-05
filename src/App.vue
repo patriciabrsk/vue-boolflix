@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="updateSearch" />
-    <Main :moviesList="moviesList" />
+    <Main :moviesList="moviesAndSeriesList" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
       popularList: [],
       moviesList: [],
       seriesList: [],
-      movesAndSeriesList: [],
+      moviesAndSeriesList: [],
       inputSearch: "",
     };
   },
@@ -31,6 +31,20 @@ export default {
       if (query != "") {
         this.inputSearch = query;
         this.getMoviesData();
+        this.getSeriesData();
+      } else {
+        axios
+          .get(
+            `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&page=1`
+          )
+          .then((response) => {
+            console.log(response);
+            this.popularList = response.data.results;
+            console.log(this.popularList);
+          })
+          .catch((error) => {
+            console.log(error.status_message);
+          });
       }
     },
     getMoviesData() {
@@ -41,7 +55,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.moviesList = response.data.results;
-          this.movesAndSeriesList = [...this.moviesList, ...this.seriesList];
+          this.moviesAndSeriesList = [...this.moviesList, ...this.seriesList];
         })
         .catch((error) => {
           console.log(error.status_message);
@@ -55,31 +69,31 @@ export default {
         .then((response) => {
           console.log(response);
           this.seriesList = response.data.results;
-          this.movesAndSeriesList = [...this.moviesList, ...this.seriesList];
+          this.moviesAndSeriesList = [...this.moviesList, ...this.seriesList];
         })
         .catch((error) => {
           console.log(error.status_message);
         });
     },
-    async getPopularMovieData() {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&&page=1`
-        )
-        .then((response) => {
-          console.log(response);
-          this.popularList = response.data.results;
-          console.log(this.popularList);
-        })
-        .catch((error) => {
-          console.log(error.status_message);
-        });
-    },
+    // async getPopularMoviesData() {
+    //   axios
+    //     .get(
+    //       `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&page=1`
+    //     )
+    //     .then((response) => {
+    //       console.log(response);
+    //       this.popularList = response.data.results;
+    //       console.log(this.popularList);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error.status_message);
+    //     });
+    // },
   },
   created() {
-    this.getPopularMovieData();
+    // this.getPopularMoviesData();
+    this.updateSearch();
   },
-  computed() {},
 };
 </script>
 
@@ -87,5 +101,6 @@ export default {
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   background-color: #434343;
+  width: 100%;
 }
 </style>

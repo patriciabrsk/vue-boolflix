@@ -21,7 +21,6 @@ export default {
     popularList: Array,
   },
   components: { MovieCard },
-  computed: {},
 };
 </script>
 
