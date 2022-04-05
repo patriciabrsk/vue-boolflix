@@ -1,12 +1,12 @@
 <template>
-  <header class="vw-100 px-3">
-    <nav class="navbar container-fluid justify-content-between">
+  <header class="vw-100">
+    <nav class="navbar container-fluid justify-content-between mb-5">
       <div class="logo fs-4">
         <a class="text-uppercase text-decoration-none fw-bold">Boolflix</a>
       </div>
       <div class="search-bar d-flex">
         <input
-          v-model="userQuery"
+          v-model.trim="userQuery"
           class="form-control me-2"
           type="search"
           placeholder="Search"

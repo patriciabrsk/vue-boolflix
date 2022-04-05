@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header @search="search" />
+    <Header @search="updateSearch" />
     <Main :moviesList="moviesList" />
   </div>
 </template>
@@ -18,45 +18,66 @@ export default {
   },
   data() {
     return {
+      apiKey: "?api_key=b2ef9be417192405baaaa7ce6bc2d036",
       moviesList: [],
+      seriesList: [],
+      movesAndSeriesList: [],
+      inputSearch: "",
     };
   },
   methods: {
-    search(query) {
+    updateSearch(query) {
       if (query != "") {
-        axios
-          .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=b2ef9be417192405baaaa7ce6bc2d036&language=it-IT&query=${query}`
-          )
-          .then((response) => {
-            this.movies = response.data.results;
-            console.log(this.movies);
-          })
-          .catch((error) => {
-            console.log(error.status_message);
-          });
-      } else {
-        this.moviesList = [];
+        this.inputSearch = query;
+        this.getMoviesData();
       }
     },
-    async getMovieData() {
+    getMoviesData() {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=b2ef9be417192405baaaa7ce6bc2d036&language=it-IT&&page=1`
+          `https://api.themoviedb.org/3/search/movie${this.apiKey}&language=it-IT&query=${this.inputSearch}`
         )
         .then((response) => {
           console.log(response);
           this.moviesList = response.data.results;
-          console.log(this.moviesList);
+          this.movesAndSeriesList = [...this.moviesList, ...this.seriesList];
         })
         .catch((error) => {
           console.log(error.status_message);
         });
     },
+    getSeriesData() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/tv${this.apiKey}&language=it-IT&query=${this.inputSearch}`
+        )
+        .then((response) => {
+          console.log(response);
+          this.seriesList = response.data.results;
+          this.movesAndSeriesList = [...this.moviesList, ...this.seriesList];
+        })
+        .catch((error) => {
+          console.log(error.status_message);
+        });
+    },
+    // async getPopularMovieData() {
+    //   axios
+    //     .get(
+    //       `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&&page=1`
+    //     )
+    //     .then((response) => {
+    //       console.log(response);
+    //       this.popularList = response.data.results;
+    //       console.log(this.popularList);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error.status_message);
+    //     });
+    // },
   },
-  created() {
-    this.getMovieData();
-  },
+  // created() {
+  //   this.getPopularMovieData();
+  // },
   // computed() {},
 };
 </script>

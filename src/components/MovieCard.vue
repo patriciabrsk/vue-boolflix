@@ -1,17 +1,15 @@
 <template>
-  <div class="movie-card rounded-3">
+  <div>
     <div class="col">
-      <div class="card">
+      <div class="movie-card h-100">
         <!-- <div class="front"> -->
         <img
-          class="img-fluid"
+          class="img-fluid rounded-3"
           :src="`https://image.tmdb.org/t/p/w342/${movieData.poster_path}`"
           :alt="movieData.title"
         />
-        <h1>{{ movieData.title }}</h1>
-        <p>{{ movieData.original_title }}</p>
-        <p></p>
-        <p></p>
+        <!-- <h1>{{ movieData.title }}</h1>
+        <p>{{ movieData.original_title }}</p> -->
         <!-- </div> -->
       </div>
     </div>

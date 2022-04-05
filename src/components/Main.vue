@@ -1,6 +1,6 @@
 <template>
-  <div clas="container py-4">
-    <div class="row row-cols-5 g-4 mx-5">
+  <div clas="container p">
+    <div class="row row-cols-4 g-4">
       <MovieCard
         :movieData="movie"
         v-for="(movie, index) in moviesList"
@@ -18,18 +18,19 @@ export default {
   name: "Main",
   props: {
     moviesList: Array,
+    popularList: Array,
   },
   components: { MovieCard },
-  data() {
-    return {};
+  computed: {
+    filteredContacts() {
+      return this.moviesList.filter((contact) => {
+        return contact.name.toLowerCase().match(this.searchInput.toLowerCase());
+      });
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
 @import "../assets/style/style.scss";
-
-ol {
-  color: white;
-}
 </style>
