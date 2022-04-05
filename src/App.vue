@@ -33,19 +33,6 @@ export default {
         this.inputSearch = query;
         this.getMoviesData();
         this.getSeriesData();
-      } else {
-        axios
-          .get(
-            `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&page=1`
-          )
-          .then((response) => {
-            console.log(response);
-            this.popularList = response.data.results;
-            console.log(this.popularList);
-          })
-          .catch((error) => {
-            console.log(error.status_message);
-          });
       }
     },
     getMoviesData() {
@@ -101,6 +88,5 @@ export default {
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   background-color: #434343;
-  width: 100%;
 }
 </style>
