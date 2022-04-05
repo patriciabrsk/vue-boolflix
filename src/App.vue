@@ -85,6 +85,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/style/style.scss";
+
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   background-color: #434343;

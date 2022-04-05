@@ -1,5 +1,5 @@
 <template>
-  <div clas="container-fluid p">
+  <div clas="container-fluid">
     <div class="row row-cols-4 g-4" v-if="moviesList.length > 0">
       <MovieCard
         :movieData="movie"
