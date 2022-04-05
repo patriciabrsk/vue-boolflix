@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="col">
-      <div class="movie-card h-100">
+      <div class="movie-card h-100 card">
         <!-- <div class="front"> -->
         <img
-          class="img-fluid rounded-3"
+          class="img-fluid"
           :src="`https://image.tmdb.org/t/p/w342/${movieData.poster_path}`"
           :alt="movieData.title"
         />

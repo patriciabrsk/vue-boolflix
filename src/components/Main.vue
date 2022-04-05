@@ -21,13 +21,7 @@ export default {
     popularList: Array,
   },
   components: { MovieCard },
-  computed: {
-    filteredContacts() {
-      return this.moviesList.filter((contact) => {
-        return contact.name.toLowerCase().match(this.searchInput.toLowerCase());
-      });
-    },
-  },
+  computed: {},
 };
 </script>
 

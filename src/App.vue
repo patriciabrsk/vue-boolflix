@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       apiKey: "?api_key=b2ef9be417192405baaaa7ce6bc2d036",
+      popularList: [],
       moviesList: [],
       seriesList: [],
       movesAndSeriesList: [],
@@ -60,25 +61,25 @@ export default {
           console.log(error.status_message);
         });
     },
-    // async getPopularMovieData() {
-    //   axios
-    //     .get(
-    //       `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&&page=1`
-    //     )
-    //     .then((response) => {
-    //       console.log(response);
-    //       this.popularList = response.data.results;
-    //       console.log(this.popularList);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.status_message);
-    //     });
-    // },
+    async getPopularMovieData() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&&page=1`
+        )
+        .then((response) => {
+          console.log(response);
+          this.popularList = response.data.results;
+          console.log(this.popularList);
+        })
+        .catch((error) => {
+          console.log(error.status_message);
+        });
+    },
   },
-  // created() {
-  //   this.getPopularMovieData();
-  // },
-  // computed() {},
+  created() {
+    this.getPopularMovieData();
+  },
+  computed() {},
 };
 </script>
 
