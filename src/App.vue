@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     updateSearch(query) {
-      if (query != "") {
+      if (query !== "") {
         this.popularList = [];
         this.inputSearch = query;
         this.getMoviesData();
