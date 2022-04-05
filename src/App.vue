@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="updateSearch" />
-    <Main :moviesList="moviesAndSeriesList" />
+    <Main :moviesList="moviesList" :popularList="popularList" />
   </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
   methods: {
     updateSearch(query) {
       if (query != "") {
+        this.popularList = [];
         this.inputSearch = query;
         this.getMoviesData();
         this.getSeriesData();
@@ -75,24 +76,23 @@ export default {
           console.log(error.status_message);
         });
     },
-    // async getPopularMoviesData() {
-    //   axios
-    //     .get(
-    //       `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&page=1`
-    //     )
-    //     .then((response) => {
-    //       console.log(response);
-    //       this.popularList = response.data.results;
-    //       console.log(this.popularList);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.status_message);
-    //     });
-    // },
+    async getPopularMoviesData() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/popular${this.apiKey}&language=it-IT&page=1`
+        )
+        .then((response) => {
+          console.log(response);
+          this.popularList = response.data.results;
+          console.log(this.popularList);
+        })
+        .catch((error) => {
+          console.log(error.status_message);
+        });
+    },
   },
   created() {
-    // this.getPopularMoviesData();
-    this.updateSearch();
+    this.getPopularMoviesData();
   },
 };
 </script>

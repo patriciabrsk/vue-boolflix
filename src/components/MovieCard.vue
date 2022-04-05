@@ -9,6 +9,7 @@
           :alt="movieData.title"
         />
         <h1 class="text-white">{{ movieData.title || movieData.name }}</h1>
+        <country-flag country="it" size="big" />
         <p class="text-white">
           {{ movieData.original_title || movieData.original_name }}
         </p>
