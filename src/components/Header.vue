@@ -1,6 +1,6 @@
 <template>
   <header class="vw-100">
-    <nav class="navbar container-fluid justify-content-between mb-5">
+    <nav class="navbar container-fluid px-4 justify-content-between">
       <div class="logo fs-4">
         <a class="text-uppercase text-decoration-none fw-bold">Boolflix</a>
       </div>

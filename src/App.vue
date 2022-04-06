@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <Header @search="updateSearch" />
-    <Main :moviesList="moviesList" :popularList="popularList" />
+    <Main
+      :moviesList="moviesList"
+      :popularList="popularList"
+      :seriesList="seriesList"
+      :moviesAndSeriesList="moviesAndSeriesList"
+    />
   </div>
 </template>
 
@@ -33,6 +38,10 @@ export default {
         this.inputSearch = query;
         this.getMoviesData();
         this.getSeriesData();
+      } else {
+        this.moviesList = [];
+        this.seriesList = [];
+        this.getPopularMoviesData();
       }
     },
     getMoviesData() {
