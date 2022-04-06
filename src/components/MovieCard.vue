@@ -1,31 +1,26 @@
 <template>
   <div class="justify-content-center d-flex">
     <div class="col">
-      <div
-        class="movie-card rounded-3 p-0"
-        @click="flipCard()"
-        :class="{ flipped: isClicked }"
-      >
-        <div class="flip-card-wrapper">
-          <div class="front-image">
-            <img
-              class="rounded"
-              :src="`https://image.tmdb.org/t/p/w342/${movieData.poster_path}`"
-              :alt="movieData.title"
-            />
-          </div>
-          <div class="back-info d-none overflow-auto">
-            <h2 class="title text-white">
-              Titolo: {{ movieData.title || movieData.name }}
-            </h2>
-            <p class="original-title text-white">
-              Titolo originale:
-              {{ movieData.original_title || movieData.original_name }}
-            </p>
-            <p class="overview">{{ movieData.overview }}</p>
-            <country-flag :country="movieData.original_language" size="small" />
-            <p></p>
-          </div>
+      <div class="movie-card rounded-3 p-0" @click="isClicked = !isClicked">
+        <div class="front-image">
+          <img
+            v-show="!isClicked"
+            class="rounded"
+            :src="`https://image.tmdb.org/t/p/w342/${movieData.poster_path}`"
+            :alt="movieData.title"
+          />
+        </div>
+        <div class="back-info overflow-auto p-3" v-show="isClicked">
+          <h5 class="title text-white text-uppercase">
+            Titolo: {{ movieData.title || movieData.name }}
+          </h5>
+          <p class="original-title text-white">
+            Titolo originale:
+            {{ movieData.original_title || movieData.original_name }}
+          </p>
+          <p class="overview">{{ movieData.overview }}</p>
+          <country-flag :country="movieData.original_language" size="small" />
+          <p>{{ movieData.vote_average }}</p>
         </div>
       </div>
     </div>
@@ -43,11 +38,11 @@ export default {
       isClicked: false,
     };
   },
-  methods: {
-    flipCard() {
-      this.isClicked = !this.isClicked;
-    },
-  },
+  // methods: {
+  //   showBack() {
+  //     this.isClicked = !this.isClicked;
+  //   },
+  // },
 };
 </script>
 
@@ -55,14 +50,6 @@ export default {
 @import "../assets/style/style.scss";
 
 div.movie-card {
-  -webkit-transition: -webkit-transform 0.6s;
-  -moz-transition: -moz-transform 0.6s;
-  -o-transition: -o-transform 0.6s;
-  transition: transform 0.6s;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -o-transform-style: preserve-3d;
-  transform-style: preserve-3d;
   position: relative;
 
   &:hover {
@@ -71,20 +58,13 @@ div.movie-card {
     cursor: pointer;
   }
 
-  .movie-card.flipped {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+  .front-image.clicked {
+    display: none;
   }
 
-  .movie-card .front-image,
   .movie-card .back-info {
     color: white;
     position: absolute;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    box-shadow: 3px 5px 20px 2px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16),
-      0 2px 5px rgba(0, 0, 0, 0.26);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
   }
 
