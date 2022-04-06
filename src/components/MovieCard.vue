@@ -21,8 +21,10 @@
             {{ movieData.original_title || movieData.original_name }}
           </p>
           <p class="overview">{{ movieData.overview }}</p>
-          <p>{{ movieData.vote_average }}</p>
-          <p><font-awesome-icon icon="fa-solid fa-star" /></p>
+          <p class="vote-average">
+            {{ getRatingInteger(movieData.vote_average) }}
+            <font-awesome-icon icon="fa-solid fa-star" />
+          </p>
           <country-flag :country="movieData.original_language" size="small" />
         </div>
       </div>
@@ -41,11 +43,11 @@ export default {
       isClicked: false,
     };
   },
-  // methods: {
-  //   showBack() {
-  //     this.isClicked = !this.isClicked;
-  //   },
-  // },
+  methods: {
+    getRatingInteger(number) {
+      return Math.ceil(number / 2);
+    },
+  },
 };
 </script>
 
