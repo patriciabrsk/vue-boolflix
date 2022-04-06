@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-4 mb-4">
     <div
-      class="row ow-cols-4 row-cols-md-5 row-cols-lg-6 g-4"
+      class="row row-cols-4 row-cols-md-5 row-cols-lg-6 g-4"
       v-if="moviesList.length > 0"
     >
       <MovieCard
@@ -11,7 +11,7 @@
       />
     </div>
     <div
-      class="row mt-3 ow-cols-4 row-cols-md-5 row-cols-lg-6 g-4"
+      class="row row-cols-4 row-cols-md-5 row-cols-lg-6 g-4 mt-3"
       v-if="seriesList.length > 0"
     >
       <MovieCard
@@ -20,7 +20,7 @@
         :key="index"
       />
     </div>
-    <div class="row row-cols-4 g-4" v-if="popularList.length > 0">
+    <div class="row home-page row-cols-4 g-4" v-if="popularList.length > 0">
       <div class="col-12 text-white mb-0">
         <span class="badge text-uppercase fs-6 px-3 py-2 rounded-pill bg-dark">
           Most Popular

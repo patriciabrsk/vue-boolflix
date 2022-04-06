@@ -32,12 +32,6 @@
               "
             />
           </p>
-          <!-- <span
-              v-for="star in getRatingInteger(movieData.vote_average)"
-              :key="star"
-            >
-              <font-awesome-icon icon="fa-solid fa-star"
-            /></span> -->
           <country-flag :country="movieData.original_language" size="small" />
         </div>
       </div>
@@ -69,7 +63,7 @@ export default {
 
 div.movie-card {
   width: 100%;
-  // height: 500px;
+
   &:hover {
     transform: scale(1.01);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
@@ -78,9 +72,6 @@ div.movie-card {
 
   .front-image.clicked {
     display: none;
-  }
-
-  .movie-card .back-info {
   }
 
   div.front-image img {
