@@ -22,7 +22,6 @@
           </p>
           <p class="overview">{{ movieData.overview }}</p>
           <p class="vote-average">
-            {{ getRatingInteger(movieData.vote_average) }}
             <font-awesome-icon
               v-for="(star, int) in 5"
               :key="int"
