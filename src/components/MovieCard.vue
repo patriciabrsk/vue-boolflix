@@ -23,13 +23,22 @@
           <p class="overview">{{ movieData.overview }}</p>
           <p class="vote-average">
             {{ getRatingInteger(movieData.vote_average) }}
-            <span
+            <font-awesome-icon
+              v-for="(star, int) in 5"
+              :key="int"
+              :icon="
+                int < getRatingInteger(movieData.vote_average)
+                  ? 'fa-solid fa-star'
+                  : 'fa-regular fa-star'
+              "
+            />
+          </p>
+          <!-- <span
               v-for="star in getRatingInteger(movieData.vote_average)"
               :key="star"
             >
               <font-awesome-icon icon="fa-solid fa-star"
-            /></span>
-          </p>
+            /></span> -->
           <country-flag :country="movieData.original_language" size="small" />
         </div>
       </div>
